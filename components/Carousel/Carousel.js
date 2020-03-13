@@ -51,6 +51,7 @@ function carouselCreator(){
   const myCaroPosition = [carouselImg1, carouselImg2, carouselImg3, carouselImg4]
   let currentCaroPosition = 0
   myCaroPosition[currentCaroPosition].style.display='block'
+  // animation(myCaroPosition[currentCaroPosition])
 
   carouselLeftBtn.addEventListener('click', function(){
     if(currentCaroPosition === 0){
@@ -59,11 +60,13 @@ function carouselCreator(){
       currentCaroPosition = 3
       myCaroPosition[currentCaroPosition].style.display = 'block'
       console.log(currentCaroPosition)
+      animationLeft(myCaroPosition[currentCaroPosition])
     }else{
       myCaroPosition[currentCaroPosition].style.display = 'none'
       currentCaroPosition = currentCaroPosition - 1
       myCaroPosition[currentCaroPosition].style.display = 'block'
       console.log(currentCaroPosition)
+      animationLeft(myCaroPosition[currentCaroPosition])
     }
   })
   carouselRightBtn.addEventListener('click', function(){
@@ -73,13 +76,27 @@ function carouselCreator(){
       currentCaroPosition = 0
       myCaroPosition[currentCaroPosition].style.display = 'block'
       console.log(currentCaroPosition)
+      animationRight(myCaroPosition[currentCaroPosition])
     }else{
       myCaroPosition[currentCaroPosition].style.display = 'none'
       currentCaroPosition ++
       myCaroPosition[currentCaroPosition].style.display = 'block'
       console.log(currentCaroPosition)
+      animationRight(myCaroPosition[currentCaroPosition])
     }
   })
+
+  //
+  function animationLeft(animate){
+    // console.log('animated')
+    gsap.from(animate, {duration: 1, x: -300, opacity: 0, /*scale: 0.5*/});
+    animate.style.zIndex = -1
+  }
+  function animationRight(animate){
+    // console.log('animated')
+    gsap.from(animate, {duration: 1, x: 300, opacity: 0, /*scale: 0.5*/});
+    animate.style.zIndex = -1
+  }  
   //merge parts
   carousel.append(carouselLeftBtn, carouselImg1, carouselImg2, carouselImg3, carouselImg4, carouselRightBtn)
 
