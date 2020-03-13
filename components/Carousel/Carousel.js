@@ -70,7 +70,7 @@ function carouselCreator(){
     if(currentCaroPosition === 3){
       myCaroPosition[currentCaroPosition].style.display = 'none'
       console.log('looped')
-      currentCaroPosition === 0
+      currentCaroPosition = 0
       myCaroPosition[currentCaroPosition].style.display = 'block'
       console.log(currentCaroPosition)
     }else{
